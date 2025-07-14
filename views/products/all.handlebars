@@ -1,1 +1,7 @@
 <h1>Produtos</h1>
+<div class="products">
+    {{#each products}}
+        <h3>{{this.name}}</h3>
+        <p>R$ {{this.price}}</p>
+    {{/each}}
+</div>

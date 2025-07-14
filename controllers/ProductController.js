@@ -1,7 +1,9 @@
 const Product = require("../models/Product")
 module.exports = class ProductController {
-    static showProducts(req,res){
-        res.render("products/all")
+    
+    static async showProducts(req,res){
+        const products = await Product.getProducts()
+        res.render("products/all", {products})
     }
 
     static createProducts(req,res){
