@@ -3,5 +3,6 @@
     {{#each products}}
         <h3>{{this.name}}</h3>
         <p>R$ {{this.price}}</p>
+        <a href="/products/{{this._id}}">Ver detalhes</a>
     {{/each}}
 </div>
