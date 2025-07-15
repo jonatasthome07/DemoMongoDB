@@ -1,27 +1,27 @@
 const Product = require("../models/Product")
 module.exports = class ProductController {
     
-    static async showProducts(req,res){
-        const products = await Product.getProducts()
-        res.render("products/all", {products})
-    }
-
-    static createProducts(req,res){
+     static createProducts(req,res){
         res.render("products/create")
     }
 
     static async createProductsPost(req,res){
         try {
            const {name, price, description} = req.body
-           const product = new Product(name, price, description)
-           product.save()
+           const product = new Product({name, price, description})
+           await product.save()
            res.redirect("/products")
         } catch (error) {
             console.log(error)
         }
     }
+    
+    /*static async showProducts(req,res){
+        const products = await Product.getProducts()
+        res.render("products/all", {products})
+    }
 
-    static async getProduct(req,res){
+   static async getProduct(req,res){
        try {
         const id = req.params.id
         const product = await Product.getProductById(id)
@@ -53,5 +53,5 @@ module.exports = class ProductController {
         const product = new Product(name, price, description)
         await product.updateProduct(id, name,price, description)
         res.redirect("/products")
-    }
+    }*/
 }
