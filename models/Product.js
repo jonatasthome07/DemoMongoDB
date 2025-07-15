@@ -18,15 +18,20 @@ class Product {
         return product
     }
 
-   //Método estático (sem necessidade de instanciar o objeto) para resgatar dados
-    static getProducts(){
-        const products = conn.db().collection("products").find().toArray()
+   //Métodos estáticos (sem necessidade de instanciar o objeto) para resgatar, excluir e editar dados
+    static async getProducts(){
+        const products = await conn.db().collection("products").find().toArray()
         return products
     }
 
     static async getProductById(id) {
         const product = await conn.db().collection("products").findOne({_id: new ObjectId(id)})
         return product
+    }
+
+    static async removeProductById(id){
+        await conn.db().collection("products").deleteOne({_id: new ObjectId(id)})
+        return
     }
 }
 
