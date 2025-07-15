@@ -21,10 +21,10 @@ module.exports = class ProductController {
         res.render("products/all", {products})
     }
 
-   /*static async getProduct(req,res){
+   static async getProduct(req,res){
        try {
         const id = req.params.id
-        const product = await Product.getProductById(id)
+        const product = await Product.findById(id).lean()
         res.render("products/product", {product})
        } catch (error) {
         console.log(error)
@@ -32,7 +32,7 @@ module.exports = class ProductController {
 
     }
 
-    static async removeProduct(req,res){
+    /*static async removeProduct(req,res){
         try {
         const id = req.params.id
         await Product.removeProductById(id)
