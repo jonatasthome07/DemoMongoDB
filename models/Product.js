@@ -34,6 +34,7 @@ class Product {
         return
     }
 
+    //Método para atualizar dado    
     async updateProduct(id){
         await conn.db().collection("products").updateOne({_id: new ObjectId(id)}, {$set: this})
         return 

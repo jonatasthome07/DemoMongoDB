@@ -1,20 +1,14 @@
-//Importa apenas o MongoClient do módulo para se conectar ao banco
-const {MongoClient} = require('mongodb')
+const mongoose = require ("mongoose")
 
-//URI para instanciar uma conexão localmente
-const uri = "mongodb://localhost:27017/demomongodb"
-
-//Instanciamos a classe com a URI da conexão
-const client = new MongoClient(uri)
-
-async function run() {
+async function main() {
     try {
-       await client.connect()
-       console.log("Conexão realizada!") 
+        await mongoose.connect("mongodb://localhost:27017/demomongoose")
+        console.log("Conexão realizada com sucesso!")
+
     } catch (error) {
         console.log(error)
     }
 }
 
-run()
-module.exports = client
+main()
+module.exports = main
