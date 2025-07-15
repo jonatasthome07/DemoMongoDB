@@ -32,15 +32,15 @@ module.exports = class ProductController {
 
     }
 
-    /*static async removeProduct(req,res){
+    static async removeProduct(req,res){
         try {
         const id = req.params.id
-        await Product.removeProductById(id)
+        await Product.findByIdAndDelete({_id:id})
         res.redirect("/products")
         } catch (error) {
            console.log(error) 
         }
-    }*/
+    }
 
     static async editProduct(req,res){
         const id = req.params.id
