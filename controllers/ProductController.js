@@ -16,12 +16,12 @@ module.exports = class ProductController {
         }
     }
     
-    /*static async showProducts(req,res){
-        const products = await Product.getProducts()
+    static async showProducts(req,res){
+        const products = await Product.find().lean()
         res.render("products/all", {products})
     }
 
-   static async getProduct(req,res){
+   /*static async getProduct(req,res){
        try {
         const id = req.params.id
         const product = await Product.getProductById(id)
