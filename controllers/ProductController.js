@@ -40,18 +40,18 @@ module.exports = class ProductController {
         } catch (error) {
            console.log(error) 
         }
-    }
+    }*/
 
     static async editProduct(req,res){
         const id = req.params.id
-        const product = await Product.getProductById(id)
+        const product = await Product.findById(id).lean()
         res.render("products/edit", {product})
     }
 
     static async editProductPost(req,res){
         const {id, name,price,description} = req.body
-        const product = new Product(name, price, description)
-        await product.updateProduct(id, name,price, description)
+        const product = {name, price, description}
+        await Product.updateOne({_id:id}, product)
         res.redirect("/products")
-    }*/
+    }
 }
