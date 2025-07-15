@@ -47,4 +47,11 @@ module.exports = class ProductController {
         const product = await Product.getProductById(id)
         res.render("products/edit", {product})
     }
+
+    static async editProductPost(req,res){
+        const {id, name,price,description} = req.body
+        const product = new Product(name, price, description)
+        await product.updateProduct(id, {name,price, description})
+        res.redirect("/products")
+    }
 }

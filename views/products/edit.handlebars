@@ -1,5 +1,6 @@
 <h1>Criar produto:</h1>
 <form action="/products/edit" method="post">
+<input type="hidden" name="id"value="{{product._id}}">
     <div class="form-control">
         <label for="name">Nome do produto: </label>
         <input type="text" name="name" value="{{product.name}}">
@@ -12,5 +13,5 @@
         <label for="description">Descrição do produto: </label>
         <textarea name="description">{{product.description}}</textarea>
     </div>
-    <input type="submit" value="Criar produto" class="btn">
+    <input type="submit" value="Salvar alterações" class="btn">
 </form>
